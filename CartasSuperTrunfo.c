@@ -6,28 +6,50 @@ void limpar_buffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
-/*
-Carta 1:
-Estado: A
-Código: A01
-Nome da Cidade: São Paulo
-População: 12325000
-Área: 1521.11 km²
-PIB: 699.28 bilhões de reais
-Número de Pontos Turísticos: 50
 
-Carta 2:
-Estado: B
-Código: B02
-Nome da Cidade: Rio de Janeiro
-População: 6748000
-Área: 1200.25 km²
-PIB: 300.50 bilhões de reais
-Número de Pontos Turísticos: 30    
+/*
+    Carta 1:
+    Estado: A
+    Código: A01
+    Nome da Cidade: São Paulo
+    População: 12325000
+    Área: 1521.11 km²
+    PIB: 699.28 bilhões de reais
+    Número de Pontos Turísticos: 50
+
+    Carta 2:
+    Estado: B
+    Código: B02
+    Nome da Cidade: Rio de Janeiro
+    População: 6748000
+    Área: 1200.25 km²
+    PIB: 300.50 bilhões de reais
+    Número de Pontos Turísticos: 30    
 */
-//Super Trunfo em c: Fundamentos e Técnicas Avançadas
+
+
+    //Super Trunfo em c: Fundamentos e Técnicas Avançadas
 int main() {
-    // var primeira carta
+   /* // var primeira carta
+    char C1_Estado[20] = {"A"};
+    char C1_CodCarta[20] = {"A01"};
+    char C1_cidade[20] = {"Sao Paulo"};
+    int C1_populacao = 12325000;
+    float C1_area  = 1521.11;
+    float C1_pib = 699.28;
+    int C1_numero_de_pontos_turisticos = 50;
+    int C1_pontos; // Pontos para determinar o ganhador
+
+    // var segunda carta
+    char C2_Estado[20] = {"B"};
+    char C2_CodCarta[20] = {"B02"};
+    char C2_cidade[20] = {"Rio de Janeiro"};
+    int C2_populacao = 6748000;
+    float C2_area = 1200.25;
+    float C2_pib = 300.50;
+    int C2_numero_de_pontos_turisticos = 30;
+    int C2_pontos = 0; // Pontos para determinar o ganhador */
+
     char C1_Estado[20];
     char C1_CodCarta[20];
     char C1_cidade[20];
@@ -35,6 +57,7 @@ int main() {
     float C1_area;
     float C1_pib;
     int C1_numero_de_pontos_turisticos;
+    int C1_pontos = 0; // Pontos para determinar o ganhador
 
     // var segunda carta
     char C2_Estado[20];
@@ -44,7 +67,9 @@ int main() {
     float C2_area;
     float C2_pib;
     int C2_numero_de_pontos_turisticos;
-    
+    int C2_pontos = 0 ; // Pontos para determinar o ganhador
+
+
     printf("====================\n");
     printf("SUPER TRUNFO\n");
     printf("===================\n");
@@ -61,7 +86,7 @@ int main() {
     limpar_buffer();
     printf("Digite o nome da cidade:\n");
     scanf(" %[^\n]%*c", C1_cidade); //funciona so precisa do espaco
-    limpar_buffer();
+    //limpar_buffer();
     printf("Digite a populacao da cidade:\n");
     scanf("%d", &C1_populacao);
     limpar_buffer();
@@ -97,7 +122,7 @@ int main() {
     limpar_buffer();
     printf("Digite o nome da cidade:\n");
     scanf(" %[^\n]%*c", C2_cidade);
-    limpar_buffer();
+    //limpar_buffer();
     printf("Digite a populacao da cidade:\n");
     scanf("%d", &C2_populacao);
     limpar_buffer();
@@ -122,6 +147,154 @@ int main() {
     printf("PIB: R$%.2f bilhões de reais\n", C2_pib);
     printf("Numero de pontos turisticos: %d\n", C2_numero_de_pontos_turisticos);
     printf("===================================\n");
+    
+    // Densidade Populacional e PIB per capita
+    float C1_populacao_float = (float)C1_populacao;
+    float C2_populacao_float = (float)C2_populacao;
+    float C1_pib_per_capita = (C1_pib * 1000000000) / C1_populacao_float;
+    float C2_pib_per_capita = (C2_pib * 1000000000) / C2_populacao_float;
+    float C1_densidade_populacional = C1_populacao_float / C1_area;
+    float C2_densidade_populacional = C2_populacao_float / C2_area;
+
+    printf("Agora em relação as duas cartas, vamos analizar algumas coisas:\n");
+    printf("Densidade Populacional da cidade da 1º carta: %.2f habitantes por km²\n", C1_densidade_populacional);
+    printf("PIB per capita da cidade da 1º carta: R$%.2f\n", C1_pib_per_capita);
+    printf("Densidade Populacional da cidade da 2ª carta: %.2f habitantes por km²\n", C2_densidade_populacional);
+    printf("PIB per capita da cidade da 2ª carta: R$%.2f\n", C2_pib_per_capita);
+
+    //Comparação de um atributo (População, Área, PIB, Densidade Populacional ou PIB per capita)
+      /*Comparação de cartas (Atributo: População):
+ 
+        Carta 1 - São Paulo (SP): 12.300.000
+
+        Carta 2 - Rio de Janeiro (RJ): 6.000.000
+
+        Resultado: Carta 1 (São Paulo) venceu!
+    */
+    if (C1_populacao > C2_populacao) {
+        printf("===========================================\n");
+        printf("Comparação de cartas (Atributo: População):\n");
+        printf("Carta 1 - %s: %d\n", C1_cidade, C1_populacao);
+        printf("Carta 2 - %s: %d\n", C2_cidade, C2_populacao);
+        printf("Resultado: Carta 1 (%s) venceu!\n", C1_cidade);
+        printf("===========================================\n");
+    } else if (C2_populacao > C1_populacao) {
+        printf("==========================================\n");
+        printf("Comparação de cartas (Atributo: População):\n");
+        printf("Carta 1 - %s: %d\n", C1_cidade, C1_populacao);
+        printf("Carta 2 - %s: %d\n", C2_cidade, C2_populacao);
+        printf("Resultado: Carta 2 (%s) venceu!\n", C2_cidade);
+        printf("===========================================\n");
+    } else {
+        printf("As duas cartas possuem a mesma população.\nEntão, vamos comparar os outros atributos.\n");
+        if(C1_area > C2_area) {
+            printf("===================================\n");
+            printf("Comparação de cartas (Atributo: Área):\n");
+            printf("Carta 1 - %s: %.2f\n", C1_cidade, C1_area);
+            printf("Carta 2 - %s: %.2f\n", C2_cidade, C2_area);
+            printf("Resultado: Carta 2 (%s) venceu!\n", C2_cidade);
+            printf("===========================================\n");
+        } else if (C2_area > C1_area) {
+            printf("===================================\n");
+            printf("Comparação de cartas (Atributo: Área):\n");
+            printf("Carta 1 - %s: %.2f\n", C1_cidade, C1_area);
+            printf("Carta 2 - %s: %.2f\n", C2_cidade, C2_area);
+            printf("Resultado: Carta 2 (%s) venceu!\n", C2_cidade);
+            printf("===========================================\n");
+        } else {
+            printf("As duas cartas possuem a mesma Área.\nEntão, vamos comparar os outros atributos.\n");
+            if ((C1_pib * 1000000000) > (C2_pib * 1000000000)) {
+                printf("===================================\n");
+                printf("Comparação de cartas (Atributo: PIB):\n");
+                printf("Carta 1 - %s: R$%.2f\n", C1_cidade, C1_pib * 1000000000);
+                printf("Carta 2 - %s: R$%.2f\n", C2_cidade, C2_pib * 1000000000);
+                printf("Resultado: Carta 1 (%s) venceu!\n", C1_cidade);
+            } else if ((C2_pib * 1000000000) > (C1_pib * 1000000000)) {
+                printf("===================================\n");
+                printf("Comparação de cartas (Atributo: PIB):\n");
+                printf("Carta 1 - %s: R$%.2f\n", C1_cidade, C1_pib * 1000000000);
+                printf("Carta 2 - %s: R$%.2f\n", C2_cidade, C2_pib * 1000000000);
+                printf("Resultado: Carta 2 (%s) venceu!\n", C2_cidade);
+            } else {
+                printf("As duas cartas possuem o mesmo PIB.\nEntão, vamos comparar os outros atributos.\n");
+                if (C1_densidade_populacional < C2_densidade_populacional) {
+                    printf("===================================\n");
+                    printf("Comparação de cartas (Atributo: Densidade Populacional):\n");
+                    printf("Carta 1 - %s: %.2f\n", C1_cidade, C1_densidade_populacional);
+                    printf("Carta 2 - %s: %.2f\n", C2_cidade, C2_densidade_populacional);
+                    printf("Resultado: Carta 1 (%s) venceu!\n", C1_cidade);
+                } else if (C2_densidade_populacional < C1_densidade_populacional) {
+                    printf("===================================\n");
+                    printf("Comparação de cartas (Atributo: Densidade Populacional):\n");
+                    printf("Carta 1 - %s: %.2f\n", C1_cidade, C1_densidade_populacional);
+                    printf("Carta 2 - %s: %.2f\n", C2_cidade, C2_densidade_populacional);
+                    printf("A cidade da 2ª carta tem a menor Densidade Populacional.\n");}
+                    printf("Resultado: Carta 2 (%s) venceu!\n", C2_cidade);
+            }
+        }
+    }
+    
+
+    //Determinando vencedor 
+    //Comparação de todos os atributos 
+    if (C1_populacao > C2_populacao) {
+        C1_pontos++;
+    } else if (C2_populacao > C1_populacao) {
+        C2_pontos++;
+    } else {
+        C1_pontos++;
+        C2_pontos++;
+    }
+    if (C1_area > C2_area) {
+        C1_pontos++;
+    } else if (C2_area > C1_area) {
+        C2_pontos++;
+    } else {
+        C1_pontos++;
+        C2_pontos++;
+    }
+    if ((C1_pib * 1000000000) > (C2_pib * 1000000000)) {
+        C1_pontos++;
+    } else if ((C2_pib * 1000000000) > (C1_pib * 1000000000)) {
+        C2_pontos++;
+    } else {
+        C1_pontos++;
+        C2_pontos++;
+    }
+    if (C1_densidade_populacional < C2_densidade_populacional) {
+        C1_pontos++;
+    } else if (C2_densidade_populacional < C1_densidade_populacional) {
+        C2_pontos++;
+    } else {
+        C1_pontos++;
+        C2_pontos++;
+    }
+    if (C1_pib_per_capita > C2_pib_per_capita) {
+        C1_pontos++;
+    } else if (C2_pib_per_capita > C1_pib_per_capita) {
+        C2_pontos++;
+    } else {
+        C1_pontos++;
+        C2_pontos++;
+    }
+    if (C1_numero_de_pontos_turisticos > C2_numero_de_pontos_turisticos) {
+        C1_pontos++;
+    } else if (C2_numero_de_pontos_turisticos > C1_numero_de_pontos_turisticos) {
+        C2_pontos++;
+    } else {
+        C1_pontos++;
+        C2_pontos++;
+    }
+    printf("===================================\n");
+    printf("VENCEDOR DO JOGO:\n");
+    if (C1_pontos > C2_pontos) {
+        printf("A cidade da 1º carta foi o vencedora com %d pontos!\n", C1_pontos);
+    } else if (C2_pontos > C1_pontos) {
+        printf("A cidade da 2ª carta foi o a vencedora com %d pontos!\n", C2_pontos);
+    } else {
+        printf("As duas cartas empataram!\n Carta 1: %d pontos\n Carta 2: %d pontos\n", C1_pontos, C2_pontos);
+    }
+
     printf("Fim do jogo\n");
     return 0;
 }
