@@ -45,7 +45,7 @@ int main() {
     float C2_pib;
     int C2_numero_de_pontos_turisticos;
     
-   /* printf("====================\n");
+    printf("====================\n");
     printf("SUPER TRUNFO\n");
     printf("===================\n");
     printf("Vamos jogar!\n");
@@ -86,11 +86,11 @@ int main() {
     printf("PIB: %.2f bilhões de reais\n", C1_pib);
     printf("Numero de pontos turisticos: %d\n", C1_numero_de_pontos_turisticos);
     printf("=======================================================\n");
-    */
+    
     // Entrada de dados da 2ª carta
     printf("Vamos entrar com os dados da 2ª carta\n");
     printf("Digite uma letra para representar o estado[A, B, C, D, E, F, G, H]:\n");
-    scanf("%c", C2_Estado);
+    scanf("%s", C2_Estado);
     limpar_buffer();
     printf("Escolha um numero para o codigo da carta, uma letra do estado seguida de um nuemro [A01, B09, C03]:\n");
     scanf("%s", C2_CodCarta);
